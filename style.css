@@ -103,7 +103,7 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* The Tricky No Button */
+/* The Tricky No Button - Solid and Non-flickering */
 #no-btn {
     background: #ccc;
     color: #333;
@@ -164,15 +164,29 @@ button:hover {
 .daisy-bg { top: 10%; left: 10%; }
 .daisy-bg-2 { bottom: 10%; right: 10%; animation-direction: reverse; }
 
+/* Floating Balloons */
 .balloon {
     position: absolute;
-    font-size: 3rem;
+    font-size: 3.5rem;
     bottom: -100px;
-    left: 10%;
-    animation: floatUp 6s linear infinite;
     z-index: 2;
 }
+.b1 { left: 10%; animation: floatUp 7s linear infinite; }
+.b2 { left: 40%; animation: floatUp 9s linear infinite; animation-delay: 3s; }
+.b3 { right: 12%; animation: floatUp 6s linear infinite; animation-delay: 1.5s; }
 
+/* Fireworks & Crackers Styling */
+.firework-icon {
+    position: absolute;
+    font-size: 3rem;
+    animation: pulse-and-shake 2.5s ease-in-out infinite alternate;
+    z-index: 2;
+}
+.f1 { top: 12%; left: 15%; }
+.f2 { top: 8%; right: 18%; animation-delay: 0.7s; }
+.f3 { bottom: 15%; left: 8%; animation-delay: 1.2s; }
+
+/* Global Firework element backward compatibility */
 .firework {
     position: absolute;
     font-size: 4rem;
@@ -188,6 +202,7 @@ button:hover {
     margin-top: 10px;
 }
 
+/* Core Animations */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -205,6 +220,11 @@ button:hover {
 @keyframes pulse {
     0% { transform: scale(0.8); opacity: 0.5; }
     100% { transform: scale(1.2); opacity: 1; }
+}
+
+@keyframes pulse-and-shake {
+    0% { transform: scale(0.9) rotate(-5deg); }
+    100% { transform: scale(1.2) rotate(5deg); }
 }
 
 /* Page 1 Header Arrangement */
@@ -228,7 +248,7 @@ button:hover {
     height: 100%;
     top: 0;
     left: 0;
-    pointer-events: none; /* Stops flowers from blocking clicks */
+    pointer-events: none;
     z-index: 1;
 }
 
@@ -244,18 +264,14 @@ button:hover {
 .d3 { bottom: 20%; left: 20%; animation-delay: 0.5s; }
 .d4 { bottom: 22%; right: 22%; animation-delay: 1.5s; }
 
-/* Custom Animations */
+/* Custom Daisy Animations */
 @keyframes gentle-spin {
     100% { transform: rotate(360deg); }
 }
 
 @keyframes float-and-spin {
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-    100% {
-        transform: translateY(-15px) rotate(20deg);
-    }
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-15px) rotate(20deg); }
 }
 
 /* Page 2 Festive Containers & Placements */
@@ -269,26 +285,6 @@ button:hover {
     z-index: 1;
 }
 
-/* Floating Balloons */
-.balloon {
-    position: absolute;
-    font-size: 3.5rem;
-    bottom: -100px;
-}
-.b1 { left: 10%; animation: floatUp 7s linear infinite; }
-.b2 { left: 40%; animation: floatUp 9s linear infinite; animation-delay: 3s; }
-.b3 { right: 12%; animation: floatUp 6s linear infinite; animation-delay: 1.5s; }
-
-/* Fireworks & Crackers styling */
-.firework-icon {
-    position: absolute;
-    font-size: 3rem;
-    animation: pulse-and-shake 2.5s ease-in-out infinite alternate;
-}
-.f1 { top: 12%; left: 15%; }
-.f2 { top: 8%; right: 18%; animation-delay: 0.7s; }
-.f3 { bottom: 15%; left: 8%; animation-delay: 1.2s; }
-
 /* Page 2 Subtle Daisies */
 .p2-daisy {
     position: absolute;
@@ -297,21 +293,3 @@ button:hover {
 }
 .pd1 { top: 30%; right: 8%; }
 .pd2 { bottom: 25%; right: 28%; }
-
-/* Erratic Flicker effect for the NO button */
-@keyframes flicker-crazy {
-    0%, 100% { opacity: 1; filter: drop-shadow(0 0 2px rgba(255,0,0,0.3)); }
-    25% { opacity: 0.1; }
-    50% { opacity: 0.8; }
-    75% { opacity: 0.2; }
-}
-
-.flicker-effect {
-    animation: flicker-crazy 0.15s linear infinite;
-}
-
-/* Animations */
-@keyframes pulse-and-shake {
-    0% { transform: scale(0.9) rotate(-5deg); }
-    100% { transform: scale(1.2) rotate(5deg); }
-}

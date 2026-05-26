@@ -62,25 +62,22 @@ function handleKabulClick() {
     }
 }
 
-// 4. Upgraded Elusive & Flickering "No" Button setup
+// 4. Upgraded Elusive "No" Button setup (Zero Flickering)
 function setupNoButton() {
     const noBtn = document.getElementById('no-btn');
     if (!noBtn) return;
 
-    // Instantly inject the visual rapid-flicker CSS animation class
-    noBtn.classList.add('flicker-effect');
-
     function flee() {
-        // Drastically increased boundary values so the button leaps widely across her screen
-        const x = Math.floor(Math.random() * 320) - 160; // wide left-to-right leap
-        const y = Math.floor(Math.random() * 160) - 80;  // tall up-to-down leap
+        // Keeps the wide leaps across her screen so it remains unclickable
+        const x = Math.floor(Math.random() * 320) - 160; 
+        const y = Math.floor(Math.random() * 160) - 80;  
         
         noBtn.style.transform = `translate(${x}px, ${y}px)`;
     }
 
     noBtn.addEventListener('mouseenter', flee);
     noBtn.addEventListener('touchstart', (e) => {
-        e.preventDefault(); // Stifles regular mobile tap actions before it can execute
+        e.preventDefault(); // Stifles mobile tap execution
         flee();
     });
 
