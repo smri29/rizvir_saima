@@ -206,3 +206,54 @@ button:hover {
     0% { transform: scale(0.8); opacity: 0.5; }
     100% { transform: scale(1.2); opacity: 1; }
 }
+
+/* Page 1 Header Arrangement */
+.daisy-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+.daisy-header span {
+    font-size: 1.8rem;
+    animation: gentle-spin 6s linear infinite;
+}
+
+/* Floating Daisies Layout */
+.page1-daisies {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Stops flowers from blocking clicks */
+    z-index: 1;
+}
+
+.floating-daisy {
+    position: absolute;
+    font-size: 2.5rem;
+    animation: float-and-spin 4s ease-in-out infinite alternate;
+}
+
+/* Positioning individual background daisies around the card */
+.d1 { top: 20%; left: 25%; animation-delay: 0s; }
+.d2 { top: 25%; right: 25%; animation-delay: 1s; }
+.d3 { bottom: 20%; left: 20%; animation-delay: 0.5s; }
+.d4 { bottom: 22%; right: 22%; animation-delay: 1.5s; }
+
+/* Custom Animations */
+@keyframes gentle-spin {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes float-and-spin {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-15px) rotate(20deg);
+    }
+}
