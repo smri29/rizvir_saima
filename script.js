@@ -1,4 +1,5 @@
 const TARGET_NAME = "madamji"; // Change to her actual name (lowercase)
+let kabulCount = 0;
 
 // 1. MOUNTING LOGIC: Loads all pages dynamically into the mother page
 async function loadPages() {
@@ -43,26 +44,49 @@ function nextPage(pageNumber) {
     document.getElementById(`page-${pageNumber}`).classList.add('active');
 }
 
-// 3. Elusive "No" Button setup
+// 3. Page 2 "Kabul" Button Counter Logic
+function handleKabulClick() {
+    kabulCount++;
+    const yesBtn = document.getElementById('yes-btn');
+    
+    if (kabulCount === 1) {
+        yesBtn.innerHTML = "Kabul! ❤️ (1/3)";
+    } else if (kabulCount === 2) {
+        yesBtn.innerHTML = "Kabul!! 💖 (2/3)";
+    } else if (kabulCount >= 3) {
+        yesBtn.innerHTML = "Kabul!!! 💍 (3/3)";
+        // Brief delay so she can process the 3/3 benchmark before moving to Page 3
+        setTimeout(() => {
+            nextPage(3);
+        }, 400);
+    }
+}
+
+// 4. Upgraded Elusive & Flickering "No" Button setup
 function setupNoButton() {
     const noBtn = document.getElementById('no-btn');
     if (!noBtn) return;
 
+    // Instantly inject the visual rapid-flicker CSS animation class
+    noBtn.classList.add('flicker-effect');
+
     function flee() {
-        const x = Math.floor(Math.random() * 160) - 80;
-        const y = Math.floor(Math.random() * 80) - 40;
+        // Drastically increased boundary values so the button leaps widely across her screen
+        const x = Math.floor(Math.random() * 320) - 160; // wide left-to-right leap
+        const y = Math.floor(Math.random() * 160) - 80;  // tall up-to-down leap
+        
         noBtn.style.transform = `translate(${x}px, ${y}px)`;
     }
 
     noBtn.addEventListener('mouseenter', flee);
     noBtn.addEventListener('touchstart', (e) => {
-        e.preventDefault(); 
+        e.preventDefault(); // Stifles regular mobile tap actions before it can execute
         flee();
     });
 
     noBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        alert("Nice try! But 'No' is not an option. ❤️");
+        alert("Kabul is destiny! 'No' doesn't work here. 😉❤️");
     });
 }
 
