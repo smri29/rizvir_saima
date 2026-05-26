@@ -1,4 +1,4 @@
-const TARGET_NAME = "madamji"; // Change to her actual name (lowercase)
+const TARGET_NAME = "rizvir bou"; // Change to her actual name (lowercase)
 let kabulCount = 0;
 
 // 1. MOUNTING LOGIC: Loads all pages dynamically into the mother page
